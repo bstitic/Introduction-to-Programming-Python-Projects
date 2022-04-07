@@ -8,6 +8,6 @@
 
 ##### Examples of the GUI are shown in the PDF file on page 5 (Figure 1), page 6 (Figure 2) and page 7 (Figure 3). Also, the functions and methods of the previous files are described on pages 3-6.  
 
-##### We were also given two .gif files with icons for the interface. These icons, as well as mensajeria.py and msgGUI.py, are not included in this folder since I did not develop them.   
+##### We were also given two .gif files of icons for the interface. These icons, as well as mensajeria.py and msgGUI.py, are not included in this folder since I did not develop them.   
 
-##### Finally, the report I've included here focuses on the aspects I found challenging + how I solved them as well as extra aspects I included in my project. For instance, I had alerts for whenever the user exceeded the maximum number of emails to send per day (50) or when the message to send had more than 45 characters (maximum length of the secret password for encryption).   
+##### Finally, the report I've included here focuses on the aspects I found challenging + how I solved them as well as extra aspects I included in my project. For instance, I had alerts for whenever the user exceeded the maximum number of emails that could be sent each day (50) and when the message to send had more than 45 characters (maximum length of the secret password for encryption).   
