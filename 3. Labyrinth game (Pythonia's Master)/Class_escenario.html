@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>Python: module escenario</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	</head>
+	<body bgcolor="#f0f0f8">
+		<p>
+		<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+			<tr bgcolor="#4b71ee">
+				<td colspan=3 valign=bottom> <br>
+					<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font>
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor="#4b71ee"><tt>      </tt></td>
+				<td> </td>
+				<td width="100%">
+					<p>
+					<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+						<tr bgcolor="#ebe707">
+							<td colspan=3 valign=bottom> <br>
+								<font color="#000000" face="helvetica, arial"><a name="Escenario">class <strong>Escenario</strong></a></font>
+							</td>
+						</tr>
+						<tr bgcolor="#ebe707">
+							<td rowspan=2><tt>   </tt></td>
+							<td colspan=2><tt>Representa gráficamente el escenario de juego, permitiendo actualizarlo según se necesite.<br> </tt></td>
+						</tr>
+						<tr>
+							<td> </td>
+							<td width="100%">
+								Methods defined here:<br>
+								<dl>
+									<dt><a name="Escenario-__init__"><strong>__init__</strong></a>(self, observador)</dt>
+									<dd><tt>Constructor de la clase. Se le debe entregar un objeto de alguna clase (creada por ti) que tenga un método llamado 'despierta'. Una vez que empiece a correr el juego (cuando llames al método 'corre' de esta clase) se empezará a llamar muchas veces por segundo al método 'despierta' del objeto que le entregues a este constructor. Esa será la manera en que tú podrás ir actualizando el mundo, según estimes conveniente, y actualizando la representación gráfica con los muchos métodos que te provee esta clase. Por eso es importante que, cuando construyas un objeto de esta clase, guardes ese objeto en un lugar seguro, pues no deberías construir más de uno.</tt></dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-cambia_punto_dominacion"><strong>cambia_punto_dominacion</strong></a>(self, id, estado)</dt>
+									<dd><tt>Cambia el estado del punto de dominación indicado por su identificador (id) al estado indicado por el parámetro 'estado'. Los valores posibles de 'estado' son sólo 3:<br>
+										- 0 para el estado 'vacío' (ni el jugador ni el enemigo lo tienen asignado)<br>
+										- 1 para el estado de 'jugador' (el punto de dominación pertenece al jugador)<br>
+										- 2 para el estado de 'enemigo' (el punto de dominación pertenece al enemigo)<br>
+										Recuerda que la librería sólo mostrará gráficamente cada estado, pero para la librería esto no significa nada. Eres tú el que debe llevar la cuenta para determinar, por ejemplo, si alguien ganó.</tt>
+									</dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-configura_tamanio"><strong>configura_tamanio</strong></a>(self, ancho, alto)</dt>
+									<dd><tt>Le pide al escenario que cambie su tamaño de ventana a un cierto alto y ancho. Estas medidas están expresadas en cuadros de grilla, NO en pixeles. Si tú quieres mostrar un laberinto de 30x20 cuadros, debes entregar esos mismos dos números, 30 y 20.<br>
+										Es importante que tengas en cuenta que, al cambiar el tamaño de la ventana, se eliminarán todos los elementos que estén presentes en ella (llamando al método "resetea").</tt>
+									</dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-construye_muro"><strong>construye_muro</strong></a>(self, x, y)</dt>
+									<dd><tt>Construye un muro en la posición (x, y) de la grilla. Esto es en unidades de grilla, no en pixeles pero, al igual que con los pixeles, el cuadro (0,0) corresponde al superior izquierdo.</tt></dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-corre"><strong>corre</strong></a>(self)</dt>
+									<dd><tt>Este método debe llamarse una única vez, cuando ya esté todo listo para comenzar el juego. Una vez que se llama a este método, se pierde completamente el control del programa pues desde ese momento tomará el control la interfaz gráfica. Sin embargo, muchas veces por segundo se llamará al método 'despierta' del objeto que se le entregó a este objeto al construirlo. <br>
+										 <br>
+										Puedes imaginar como que tu método 'despierta' es el contenido del loop de una simulación. La interfaz gráfica se encargará de realizar este loop, y en cada iteración lo que hará será llamar a tu método 'despierta' para que 'actualices tu mundo', tal como lo harías dentro del loop del tiempo en una simulación.</tt>
+									</dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-crea_heroe"><strong>crea_heroe</strong></a>(self, x, y, genero)</dt>
+									<dd><tt>Crea un héroe en la posición indicada y con el género indicado (el tercer parámetro puede tomar los valores "male" y "female"). Las distancias son en pixeles, donde (0,0) es la esquina superior izquierda, y la esquina inferior derecha es (ancho * tamaño, alto * tamaño). Ancho y alto son las medidas de la ventana en 'cuadros', y tamaño es la cantidad de pixeles que mide el lado de uno de esos cuadros (32).<br>
+										El punto de referencia que se usa para ubicar la posición es la esquina superior izquierda de la zona del personaje. Esto quiere decir que si se especifica, por ejemplo, la posición (245, 127), el personaje se ubicará de manera que la esquina superior izquierda de la zona que ocupa en el mapa quede en las coordenadas indicadas en pixeles.</tt>
+									</dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-crea_item"><strong>crea_item</strong></a>(self, x, y, numero)</dt>
+									<dd><tt>Crea un nuevo ítem en la posición de la grilla indicada por (x,y). El parámetro 'número' indica el tipo de ítem, según está descrito en el enunciado. Hay sólo 3 ítemes posibles, que son representados por los enteros 0, 1 y 2. Revisa el enunciado para saber más sobre éstos ítems.<br>
+										 <br>
+										Nuevamente, ten presente que para la librería estos ítems no significan absolutamente nada. Tan sólo mostrará una u otra imagen dependiendo del tipo, pero eres tú el que le debe dar significado.</tt>
+									</dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-crea_punto_dominacion"><strong>crea_punto_dominacion</strong></a>(self, x, y)</dt>
+									<dd><tt>Crea un punto de dominación en la posición (x,y) de la grilla. Te entrega el identificador del punto de dominación, para que posteriormente puedas pedirle a la librería otras tareas relacionadas, como cambiar su estado o eliminarlo. Al momento de crearlo, un punto de dominación tendrá el estado de 'vacío', representado por el número 0, que significa que aún no ha sido obtenido ni por el jugador ni por el enemigo.</tt></dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-crea_serpiente"><strong>crea_serpiente</strong></a>(self, x, y)</dt>
+									<dd><tt>Crea una serpiente en las coordenadas indicadas en pixeles (ver la función crea_heroe para detalles sobre qué coordenadas se esperan).<br>
+										Entrega como resultado un número que corresponderá al identificador de la serpiente (como su 'RUT'). Es importante guardar este identificador si luego se quiere hacer algo con esa serpiente específica (como moverla o eliminarla de la pantalla).</tt>
+									</dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-elimina_item"><strong>elimina_item</strong></a>(self, id)</dt>
+									<dd><tt>Elimina de la pantalla el item indicado por su identificador (id). Luego de esto, el identificador dejará de ser válido.</tt></dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-elimina_punto_dominacion"><strong>elimina_punto_dominacion</strong></a>(self, id)</dt>
+									<dd><tt>Elimina de la pantalla el punto de dominación indicado por su identificador (id). Luego de esto, el identificador dejará de ser válido.</tt></dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-elimina_serpiente"><strong>elimina_serpiente</strong></a>(self, id)</dt>
+									<dd><tt>Elimina la serpiente indicada por su identificador (id) de la pantalla. Una vez que se elimina, la librería ya no considerará como válido su identificador.</tt></dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-esta_presionada"><strong>esta_presionada</strong></a>(self, key)</dt>
+									<dd><tt>Te entrega True si es que la flecha indicada está presionada, o False en caso contrario. El parámetro key debe ser únicamente los strings 'Up', 'Down', 'Left', 'Right'. Si entregas cualquier otro string, te responderá simplemente False.</tt></dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-muestra_mensaje"><strong>muestra_mensaje</strong></a>(self, titulo, texto)</dt>
+									<dd><tt>Simplemente hace que se muestre una ventana de esas en que se te muestra un mensaje con un botón 'Ok' para aceptarlo. Puedes usarlo si es que quieres desplegar cierta información importante. El juego se detendrá mientras este mensaje se esté mostrando.<br>
+										 <br>
+										Los parámetro que recibe este método son el título a mostrar en la ventana y el texto que aparecerá como contenido.</tt>
+									</dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-mueve_heroe"><strong>mueve_heroe</strong></a>(self, x, y)</dt>
+									<dd><tt>Mueve el héroe a la posición indicada en pixeles (ver crea_heroe para detalles sobre las coordenadas). Ten cuidado de no llamar a este método si es que no has creado aún un héroe.</tt></dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-mueve_serpiente"><strong>mueve_serpiente</strong></a>(self, id, x, y)</dt>
+									<dd><tt>Mueve la serpiente indicada por su identificador (id) a la posición en pixeles indicada por las coordenadas (ver detalle sobre coordenadas en método crea_heroe). Ten cuidado de entregar un identificador válido de serpiente. Si eliminaste a una serpiente (con el método elimina_serpiente) ya no será válido ese identificador (dejó de existir, la matamos!).</tt></dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-pide_siono"><strong>pide_siono</strong></a>(self, titulo, texto)</dt>
+									<dd><tt>Hará que se muestre una ventana que le dará la posibilidad al usuario de responder 'sí' o 'no' con dos botones. La respuesta elegida por el usuario se te entregará como respuesta de este método, entregándote el string 'yes' si el usuario hizo clic en el botón 'sí' o el string 'no' si el usuario hizo clic en el otro botón. El juego se detendrá mientras esta ventana se esté mostrando.</tt></dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-pide_texto"><strong>pide_texto</strong></a>(self, titulo, texto)</dt>
+									<dd><tt>Hará que se muestre una ventana que le dará la posibilidad al usuario de ingresar un texto. El texto ingresado por el usuario se te entregará como respuesta de este método, o se te entregará None si es que el usuario no quizo ingresar ningún texto (presionando 'Cancelar'). El juego se detendrá mientras esta ventana se esté mostrando.</tt></dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-resetea"><strong>resetea</strong></a>(self)</dt>
+									<dd><tt>Vacía completamente el escenario, dejando todo 'en cero'. Puedes ocupar este método si quieres comenzar a mostrar otra etapa, por ejemplo. Pero ten presente que, una vez que borras todo, deberás crear todo nuevamente (muros, serpientes, el héroe, ítems, puntos de dominación) pues *todo* dejará de existir.</tt></dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-salir"><strong>salir</strong></a>(self)</dt>
+									<dd><tt>Sólo debes llamar a este método cuando quieras salir del juego, cerrando la ventana y dando por terminado el programa.</tt></dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-set_etapa"><strong>set_etapa</strong></a>(self, etapa)</dt>
+									<dd><tt>Le pide a al escenario que muestre el número de etapa en la parte inferior de la pantalla. Sólo debes indicar el número de etapa. Cada vez que llames a este método podrás cambiar el número mostrado.</tt></dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-set_mensaje"><strong>set_mensaje</strong></a>(self, mensaje)</dt>
+									<dd><tt>Le pide al escenario que muestre el mensaje que tú quieras en la parte inferior de la pantalla, justo arriba de los puntos y la etapa. Si bien puedes entregar como parámetro cualquier texto, ten cuidado que si es muy largo podría ocultarte parte del laberinto. La cantidad de texto que se puede mostrar sin que esto pase varía dependiendo del tamaño de la ventana, que puedes configurar con el método 'configura_tamanio'.</tt></dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-set_puntos_enemigo"><strong>set_puntos_enemigo</strong></a>(self, puntos)</dt>
+									<dd><tt>Le pide al escenario que muestre los puntos que lleva el enemigo en la parte inferior derecha. Se recomienda entregar sólo un número, aunque si quieres puedes entregar un texto y éste se mostrará en la pantalla.</tt></dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-set_puntos_jugador"><strong>set_puntos_jugador</strong></a>(self, puntos)</dt>
+									<dd><tt>Le pide al escenario que muestre los puntos que lleva el jugador en la parte inferior izquierda. Se recomienda entregar sólo un número, aunque si quieres puedes entregar un texto y éste se mostrará en la pantalla.</tt></dd>
+								</dl>
+								<dl>
+									<dt><a name="Escenario-tamanio_grilla"><strong>tamanio_grilla</strong></a>(self)</dt>
+									<dd><tt>Entrega el número de pixeles que mide el lado de un cuadrado de la grilla</tt></dd>
+								</dl>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+
+	</body>
+</html>
