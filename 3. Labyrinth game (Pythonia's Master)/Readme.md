@@ -6,7 +6,7 @@
 
 ##### In this project, the user could play using the arrow keys of the keyboard to move the hero around on an animated GUI. 
 
-##### There were key aspects of the game to consider during development such as, for example, having to wait 3 seconds upon reaching an already claimed "domination point" (this was applicable to both snakes and the player). Also, the enemy snakes had to be somewhat intelligent so they were supposed to go after the hero character (to win immediately), items or a "domination point" (depending on what was closer). 
+##### There were key aspects of the game to consider during development such as, for example, having to wait for 3 seconds upon reaching an already claimed "domination point" (this was applicable to both snakes and the player). Also, the enemy snakes had to be somewhat intelligent so they were supposed to go after the hero character (to win immediately), items or a "domination point" (depending on what was closer). 
 
 ##### The game also had an internal coordinate system which varied depending on the case. For instance, for walls, "domination points" and items, a coordinate system was used which was based on the squares defined by the internal grid used to create the GUI. On the other hand, for snakes and heroes, since movement should be more fluid a coordinate system based on pixels was used instead. During project development, all elements were internally considered to occupy an area of 32x32 pixels.
 
